@@ -1,39 +1,30 @@
-# marks = {"Alice":[90, 85, 92], "Bob":[78, 82, 88], "Charlie":[95, 90, 93]}
+marks_and_name = {}
 
-import os
+def input_name_marks():
+    name = input("Input you name: ")
+    marks = []
 
-marks ={}
-
-def func():
-    name = input("Enter your name:")
-    scores = []
-
-    
-    for i in range(3):
-        score = int(input("Enter your score: "))
-        if score == -1:
-            clear_marks()
+    for mark in range(3):
+        num = int(input("Enter mark: "))
+        if num == -1:
+            marks_and_name.clear()
             break
-        elif score >= 0 and score <= 100:
-            scores.append(score)
         else:
-            print("Invalid score. Please enter a score between 0 and 100.")
-            return
+            if num >= 0 and num <=100:
+                marks.append(num)
+        
 
-    marks[name] = scores
+    marks_and_name[name] = marks
+    print(marks_and_name)
 
 
+#append to text file
 
-def save_marks():
+def append_to_txt():
     with open("alevel python 2011 to 2024/example.txt", "a") as file:
-        file.write(str(marks) + "\n")
-        print("Marks saved to example.txt")
+        file.write(str(marks_and_name) +"\n")
+        print("Marks saved")
         file.close()
 
-def clear_marks():
-    marks.clear()
-    print("Marks cleared.")
-
-
-func()
-save_marks()
+input_name_marks()
+append_to_txt()
